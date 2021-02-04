@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+    <script src="/scripts/spawn.js"></script>
+  </head>
+  <body>
+    <a-scene>
+        <a-assets>
+          <audio id="click-sound" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg" preload="true"></audio>
+          <img id="city" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg">
+        </a-assets>
+      
+        
+        <!-- Background. -->
+        <a-sky id="image-360" radius="10" src="#city"></a-sky>
+      
+        <a-box id="thisbox" position="1 0.5 -3" rotation="0 45 0" sound="on: click; src: #click-sound" color="#4CC3D9"
+        event-set__enter="_event: mouseenter; color: #8FF7FF"
+        event-set__leave="_event: mouseleave; color: #4CC3D9"
+        spawn="identity: #thisbox; colour1: #8FF7FF; colour2: #4CC3D9"></a-box>
+
+      
+        <a-box id="box" position="-2 0.5 -3" rotation="0 45 0" sound="on: click; src: #click-sound" color="#e45afc"
+        event-set__enter="_event: mouseenter; color: #f2b2fd"
+        event-set__leave="_event: mouseleave; color: #e45afc"
+        spawn="identity: #box; colour1: #f2b2fd; colour2: #e45afc"></a-box>
+
+        <!-- Camera + Cursor. -->
+        <a-camera look-controls-enabled="false">
+            
+          <a-cursor cursor="rayOrigin: mouse"></a-cursor>
+        </a-camera>
+      </a-scene>
+  </body>
+</html>  
